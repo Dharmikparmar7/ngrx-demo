@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2>Product Management</h2>
+  <div class="card">
+    <div class="card-header">
+      Add Product
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onAddProduct()" class="form">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" id="productName" name="productName" class="form-control" [(ngModel)]="newProduct.name">
+        </div>
+        <div class="form-group">
+          <label for="productDescription">Product Description</label>
+          <textarea id="productDescription" name="productDescription" class="form-control"
+            [(ngModel)]="newProduct.description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+      </form>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-header">
+      Product List
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of products">
+          <div class="d-flex justify-content-between">
+            <div>
+              <strong>{{ product.name }}</strong>
+              <p>{{ product.description }}</p>
+            </div>
+            <div>
+              <button class="btn btn-warning m-1" (click)="onEditProduct(product)">Edit</button>
+              <button class="btn btn-danger m-1" (click)="onDeleteProduct(product.id)">Delete</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
